@@ -8,7 +8,7 @@ id       = ({letter}|#){letter}+
 digit    = [0-9]
 number   = {digit}+
 ws       = \n|\r|\t|\s
-block    = (''').*(''')
+block    = (''')(.*|{ws})*(''')
 string   = '.*'
 line     = (%.*\n)|(%.*\r\n)
 
