@@ -3,13 +3,14 @@
 %}
 
 %option noyywrap
+%option c++
 reserved  if|else|int|return|void
 letter    [A-Za-z]
 id        ({letter}|#){letter}+
 digit     [0-9]
 number    {digit}+
 ws        \n|\r|[ ]|\t
-block     (''')(.*|{ws})*(''')
+block     (''')([^'])+(''')
 string    '.*'
 line      (%.*\n)|(%.*\r\n)
 
@@ -61,7 +62,9 @@ std::size_t f = 0;
 %%
 int main(int argc, char *argv[]){
 printf("Enter your Code :\n");
-yylex();
+FlexLexer* lexer = new yyFlexLexer;
+while(lexer->yylex() != 0)
+;
 printf("BYE");
 return 0;
 }
