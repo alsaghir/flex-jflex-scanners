@@ -5,7 +5,7 @@ id        ({letter}|#){letter}+
 digit     [0-9]
 number    {digit}+
 ws        \n|\r|[ ]|\t
-block     (''')(.*|{ws})*(''')
+block     (''')([^']|{ws})*(''')
 string    '.*'
 line      (%.*\n)|(%.*\r\n)
 
